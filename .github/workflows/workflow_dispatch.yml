@@ -1,0 +1,45 @@
+name: workflow- dispatch
+# workflow_dispatch 설정
+on:
+  workflow_dispatch:
+    inputs:
+      # input값의 이름이 name:
+      name:
+        description: 'person name'
+        # 화면에 보일 설명을 적는다
+        required: true
+        default: 'saya'
+        type: string
+      # input값의 이름이 environment:
+      environment:
+        description: 'setting environment'
+        required: true
+        default: 'dev'
+        type: choice
+        # type: choice사용시 사용자가 고를 수있는 옵션을 작성한다
+        options:
+          - dev
+          - qa
+          - prod
+
+
+jobs:
+  # job의 이름임
+  workflow-dispatch-job:
+    runs-on: ubuntu-latest
+    steps:
+      - name: workflow-dispatch-job1
+        # 실행 시킬 일
+        run: echo hello world
+        
+      - name: workflow-dispatch-job2
+        run: |
+          echo hello workflow_dispatch
+          echo inputs[name, environment]
+          
+      - name: workflow-dispatch-job3
+        run: |
+          echo print declaring in inputs?
+          echo ${{ inputs.name }}
+          echo ${{ inputs.environment }}
+          
