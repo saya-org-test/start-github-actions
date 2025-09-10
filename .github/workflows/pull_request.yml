@@ -1,4 +1,4 @@
-name: pull-request-workflow
+name: pull-request-workflow pr
 # pull_request 가 발생했을때, 해당 workflow가 실행된다
 on: pull_request
 
