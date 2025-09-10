@@ -1,0 +1,16 @@
+name: issues-workflow
+#트리커할 이벤트를 명시하자
+on:
+  issues:
+    types: [opened]
+
+jobs:
+  issues-job:
+    runs-on: ubuntu-latest
+    steps:
+      - name: issues-job
+        run: |
+          echo 1. issues-job
+          echo 2. issues-job running
+          echo 3. Getting friendly multi line
+        
