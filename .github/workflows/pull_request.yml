@@ -1,6 +1,9 @@
-name: pull-request-workflow
+name: pull-request-workflow pr3, set type
 # pull_request 가 발생했을때, 해당 workflow가 실행된다
-on: pull_request
+on:
+  pull_request:
+    #  명시적으로 타입을 지정해준다
+    types: [opened]
 
 jobs:
   #첫번째 job의 이름
