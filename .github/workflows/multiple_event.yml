@@ -1,0 +1,23 @@
+name: multiple-event-workflow
+on:
+  # push이벤트, issues(opened)이벤트, workflow_dispatch 이벤트가
+  # 발생 할 경우, 해당 workflow가 실행 된다.
+  push:
+  issues:
+    types: [opened]
+  workflow_dispatch:
+  
+
+
+jobs:
+  multiple-event-job:
+    runs-on: ubuntu-latest
+    steps:
+      - name: step1 multiple-event
+        run: echo hello world
+        
+      - name: step2 multiple-event
+        run: |
+          echo multiple-line running, need "|"
+          echo "hello world"
+          echo up to down, Sequential run
