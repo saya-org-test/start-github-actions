@@ -20,9 +20,11 @@ jobs:
     steps:
       # 이스텝이 보여줄 이름이 step1이 된다
       # 각 스텝마다 네임을 명시적으로 작성해도 되고, 생략할 수 있다
-      - name: step1
+      - name: step1 single-line
         # run 키워드 : on에 지정한 이벤트가 발생할때, push-job이라는 이름의 job이 실행 되며
         # 이때 첫번째 스텝에 run에 명시한 일을 한다
         run: echo hello world
+      - name: step2 multiple-line
+        run:  multiple-line running, need "-"
       
       
