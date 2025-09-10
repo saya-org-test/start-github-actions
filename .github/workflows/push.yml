@@ -25,6 +25,10 @@ jobs:
         # 이때 첫번째 스텝에 run에 명시한 일을 한다
         run: echo hello world
       - name: step2 multiple-line
-        run: echo multiple-line running, need "-"
+        run: |
+          echo multiple-line running, need "|"
+          echo real multi line
+          echo "hello world"
+          echo up to down, Sequential run
       
       
