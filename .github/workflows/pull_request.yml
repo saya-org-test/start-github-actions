@@ -1,0 +1,12 @@
+name: pull-request-workflow
+# pull_request 가 발생했을때, 해당 workflow가 실행된다
+on: pull_request
+
+jobs:
+  #첫번째 job의 이름
+  pull-request-job:
+    # 어떤 러너를 사용할 것인지 정하는 run s-on
+    runs-on: ubuntu-latest
+    steps:
+      - name: when create pull-request
+        run: echo create pull-request
