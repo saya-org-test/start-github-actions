@@ -1,0 +1,28 @@
+# name: gitHub Actions 창에서 표현될 시각화 될 이름을 명시하는 키워드
+#       명시적으로 작성하자(필수는 아님)
+name: push-workflow
+
+# on: 어떤 이벤트로 GItHub Actions를 트리거(자동으로 실행)시킬 것인가 지정 하는 키워드
+on: push
+# push 이벤트 : 레포에 push되었을때
+
+# jobs: 실행 시킬 jobs들의 집합을 나타내는 키워드
+jobs:
+  # push-job: job의 이름 프로그래머가 정함
+  push-job:
+    # runs-on: 해당 job을 실행 시킬 러너를 지정하는 키워드
+    runs-on: ubuntu-latest
+      # push-job이라는 작업이 ubuntu-latest에서 실행된다
+    
+    # 해당 job에서 실행할 스텝을 지정
+    # steps : 해당 job에서 실행할 스텝들의 집합을 의미하는 키워드
+            # 이 잡이 실행 시킬 스텝들을 정의 한다
+    steps:
+      # 이스텝이 보여줄 이름이 step1이 된다
+      # 각 스텝마다 네임을 명시적으로 작성해도 되고, 생략할 수 있다
+      - name: step1
+        # run 키워드 : on에 지정한 이벤트가 발생할때, push-job이라는 이름의 job이 실행 되며
+        # 이때 첫번째 스텝에 run에 명시한 일을 한다
+        run: echo hello world
+      
+      
