@@ -1,0 +1,15 @@
+name: branch-filter
+on:
+  push:
+    # dev 브랜치에서만 동작하도록 branches 라는 필터를 사용
+    branches: ["dev"]
+    # branches: filter에 원하는 브랜치 이름을 넣으면 해당 브랜치에
+    # 푸쉬 이벤트가 발생했을 경우 워크 플로우가 실행된다
+
+jobs:
+  branch-filter:
+    runs-on: ubuntu-latest
+    steps:
+      - name: branch-filter
+        run: echo branch-filter is keyword "branches"
+
