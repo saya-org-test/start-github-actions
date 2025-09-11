@@ -6,8 +6,8 @@ jobs:
   context:
     runs-on: ubuntu-latest
     steps:
-      #- name: github context
-      #  run: echo ${{ toJSON(github) }}
+      - name: github context
+        run: echo ${{ toJSON(github) }}
         # github context의 로그를 출력 할것
         # 각각의 context는 javaScript 객체이기때문에
         # 출력을 하기 위해서는 해당 객체들을 문자열로 반환해야한다
