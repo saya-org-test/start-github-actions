@@ -1,0 +1,15 @@
+name: context
+on: workflow_dispatch
+
+# 여기서는 github context만 확인해보자
+jobs:
+  context:
+    runs-on: ubuntu-latest
+    steps:
+      - name: github context
+        run: echo ${{ toJSON(github) }}
+        # github context의 로그를 출력 할것
+        # 각각의 context는 javaScript 객체이기때문에
+        # 출력을 하기 위해서는 해당 객체들을 문자열로 반환해야한다
+        # 이떄 github Actions는 toJSON이라는 메서드를 이용해서
+        # Object객체를 JSON문자열로 변환할 수 있다
