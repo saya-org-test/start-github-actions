@@ -1,0 +1,21 @@
+name: checkout
+# 수동 트리거
+on: workflow_dispatch
+
+jobs:
+  no-checkout:
+    runs-on: ubuntu-latest
+    steps:
+      - name: check file list
+        # cat : 파일 읽어오기
+        run: cat README.md
+        
+  use-checkout:
+    runs-on: ubuntu-latest
+    steps:
+      - name: use checkout action
+      #uses 키워드를 통해 Action을 불러올 수 있다
+        uses: actions/checkout@v4
+      
+      - name: check file list
+        run: cat README.md
