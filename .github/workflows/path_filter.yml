@@ -7,7 +7,8 @@ on:
     paths:
       - ".github/workflows/part1/*"
       # part1의 모든 파일들이 변경 될때 트리거 된다
-
+      - "!.github/workflows/part1/workflow_dispatch.yml"
+      # ! -> 제외하는 기호, 해당 경로의 변경사항이 발생했을 경우 트리거는 무시된다
 jobs:
   path_filter:
     runs-on: ubuntu-latest
