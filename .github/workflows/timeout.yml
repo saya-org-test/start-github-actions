@@ -17,6 +17,7 @@ jobs:
             count=$((count+1))
             sleep 1
           done
+        timeout-minutes: 1
       - name: timeout keyword
         run: echo timeout keyword is "timeout-minutes"
         
