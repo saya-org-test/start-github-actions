@@ -1,4 +1,4 @@
-name: workflow- dispatch
+name: workflow- dispatch for paths filter workflow test
 # workflow_dispatch 설정
 on:
   workflow_dispatch:
