@@ -5,7 +5,7 @@ on:
     # paths에 지정한 경로에 변경사항이 발생한 경우
     # Github Actions이 트리거 된다.
     paths:
-      - ".github/workflows/part1/*"
+      - "../part1/push.yml"
       # part1의 모든 파일들이 변경 될때 트리거 된다
       - "!.github/workflows/part1/workflow_dispatch.yml"
       # ! -> 제외하는 기호, 해당 경로의 변경사항이 발생했을 경우 트리거는 무시된다

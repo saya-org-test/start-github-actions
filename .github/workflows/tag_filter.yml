@@ -1,0 +1,17 @@
+name: tag_filter
+on:
+
+  # push 이벤트에서만 사용이 가능
+  push:
+    tags: # 특정 태그 패턴이 일치하는 경우에만 실행된다
+      - "v[0-9]+.[0-9]+.[0-9]+"
+      # 일반적으로 버전을 나타내는 패턴
+      # v1.0.0. , v2.2.2 이런 패턴
+      # v1.0 or 1.0.0 으로 작성된 tag라면 push할때 트리거 되지않는다
+
+jobs:
+  tag_filter:
+    runs-on: ubuntu-latest
+    steps:
+      - name: tag_filter
+        run: echo tag_filter is keyword "tags"
