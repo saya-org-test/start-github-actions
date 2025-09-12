@@ -1,0 +1,23 @@
+name: timeout
+on: push
+
+jobs:
+  timeoutjob:
+    runs-on: ubuntu-latest
+    # job level 에서 timeout설정
+    timeout-minutes: 2
+    # 해당 job이 실행 되고 2분안에 종료 된다
+    
+    steps:
+      - name: loop
+        run: |
+          count=0
+          while true; do
+            echo "seconds: $count"
+            count=$((count+1))
+            sleep 1
+          done
+      - name: timeout keyword
+        run: echo timeout keyword is "timeout-minutes"
+        
+ 
