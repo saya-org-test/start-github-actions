@@ -1,0 +1,11 @@
+name: environment
+on: push
+
+jobs:
+  Organization:
+    runs-on: ubuntu-latest
+    steps:
+      - name: get Organization level secrets & variables
+        run: |
+          echo ${{ vars.LEVEL }}
+          echo ${{ secrets.SECRET }}
