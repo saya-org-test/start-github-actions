@@ -6,4 +6,4 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: external variables use var keyword
-        run: eho &{{ var.EXTERNAL_ENV }}
+        run: eho ${{ var.EXTERNAL_ENV }}
