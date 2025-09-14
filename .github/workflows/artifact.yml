@@ -1,0 +1,29 @@
+name: artifact.yml
+on: push
+# 텍스트 파일을 만들어서 아티팩트로 저장
+# -> 아티팩트를 다운로드해서 출력하는 작업
+jobs:
+  upload-artifact:
+    runs-on: ubuntu-latest
+    steps:
+      - name: make text file
+        run: echo "hello artifact" > artifact.txt
+        
+      - name: upload artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: first-artifact
+          path:  ./artifact.txt
+          
+  download-artifact:
+    runs-on: ubuntu-latest
+    needs: [upload-artifact]
+    steps:
+      - name: download artifact
+        uses: actions/download-artifact@v3
+        with:
+          name: first-artifact
+          path:  ./
+      - name: check file
+        run: cat artifact.txt
+    
