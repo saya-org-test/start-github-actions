@@ -6,4 +6,4 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: external variables use var keyword
-        run: echo ${{ VAR.EXTERNAL_ENV }}
+        run: echo ${{ vars.EXTERNAL_ENV }}
