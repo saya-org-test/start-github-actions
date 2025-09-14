@@ -1,0 +1,17 @@
+name: outputs
+on: push
+
+jobs:
+  create-output:
+    runs-on: ubuntu-latest
+    steps:
+      - name: set id, define output
+        # id : 아무거나 설정 가능, 하나의 job에서 사용하는 id는 중복되어서는 안된다
+        id: first-output
+        run: |
+          echo "define output"
+          echo "test=first-output" >> $GITHUB_OUTPUT
+      
+      - name: print output
+        run: |
+          echo ${{ steps.first-output.outputs.test }}
