@@ -1,4 +1,4 @@
-name: env1.yml
+name: var1-keyword-env.yml
 on: push
 # workflow레벨에서 환경 변수 정의 하기
 # 환경 변수는 관례상 대문자 + _ 를 사용한다

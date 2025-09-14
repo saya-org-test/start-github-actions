@@ -1,0 +1,9 @@
+name: var2-keyword-var.yml
+on: push
+
+jobs:
+  get-var:
+    runs-on: ubuntu-latest
+    steps:
+      - name: external variables use var keyword
+        run: eho &{{ var.EXTERNAL_ENV }}
