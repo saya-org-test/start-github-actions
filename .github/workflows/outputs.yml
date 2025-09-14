@@ -4,6 +4,9 @@ on: push
 jobs:
   create-output:
     runs-on: ubuntu-latest
+    # 다른 job에서 사용할 수 있도록 outputs을 설정
+    outputs:
+      test: ${{ steps.first-output.outputs.test }}
     steps:
       - name: set id, define output
         # id : 아무거나 설정 가능, 하나의 job에서 사용하는 id는 중복되어서는 안된다
@@ -15,3 +18,12 @@ jobs:
       - name: print output
         run: |
           echo ${{ steps.first-output.outputs.test }}
+      
+      # 다른 job에서 output사용하기
+  use-another-job:
+    needs: [create-output]
+    runs-on: ubuntu-latest
+    steps:
+      - name: use output in another job
+        run: |
+          echo ${{ needs.create-output.outputs.test }}
