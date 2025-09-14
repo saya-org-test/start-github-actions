@@ -1,4 +1,4 @@
-name: var2-keyword-var.yml
+name: var2-keyword-vars.yml
 on: push
 
 jobs:
