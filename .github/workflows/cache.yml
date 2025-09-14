@@ -1,0 +1,41 @@
+#  cache라는 이름의 워크플로우
+name: cache
+on:
+  push:
+    # paths filter -> 지정한 경로에 대해 이벤트가 발생했을 경우
+    # 해당 워크플로우가 트리거 된다
+    paths:
+      - "my-app/**"
+      # ** : my-app 디렉토리 아래 모든 파일을 포함 한다는 의미
+      
+jobs:
+  # 만드려는 job cache job
+  cache:
+    runs-on: ubuntu-latest
+    steps:
+        # 해당 step의 이름
+      - name: checkout
+        # uses 키워드 : actions를 사용하는 키워드
+        uses: actions/checkout@v4
+      
+      - name: setup node
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+      
+      - name: Cache Node.js modules
+        uses: actions/cache@v3
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
+            
+      - name: Install dependencies
+        run: |
+          cd my-app
+          npm ci
+      - name: npm build
+        run: |
+          cd my-app
+          npm run build
