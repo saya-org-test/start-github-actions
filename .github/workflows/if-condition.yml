@@ -1,0 +1,23 @@
+name: if-condition
+on:
+  push:
+  workflow_dispatch:
+  
+jobs:
+  #job 2개 구성, job level의 if 컨디션 작성
+  job1:
+    runs-on: ubuntu-latest
+    # push event가 발생할 경우 해당 job1이 실행 된다
+    if: ${{ github.event_name == 'push' }}
+    steps:
+      - name : get event name
+        run: echo ${{ github.event_name }}
+  
+  job2:
+    runs-on: ubuntu-latest
+    # push event가 아닌 다른 event가 발생할 경우 해당 job2가 실행 된다
+  
+    if: ${{ github.event_name != 'push' }}
+    steps:
+      - name : get event name
+        run: echo ${{ github.event_name }}
