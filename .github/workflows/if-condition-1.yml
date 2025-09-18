@@ -16,8 +16,20 @@ jobs:
   job2:
     runs-on: ubuntu-latest
     # push event가 아닌 다른 event가 발생할 경우 해당 job2가 실행 된다
-  
     if: ${{ github.event_name != 'push' }}
     steps:
       - name : get event name
         run: echo ${{ github.event_name }}
+ 
+  job3:
+    runs-on: ubuntu-latest
+    steps:
+      - name : get event name1
+        # push event가 발생할 경우 해당 step이 실행 된다
+        if: ${{ github.event_name == 'push' }}
+        run: echo int step ${{ github.event_name }}
+      
+      - name: get event name2
+        # push event가 아닌 다른 event가 발생할 경우 해당 step이 실행 된다
+        if: ${{ github.event_name != 'push' }}
+        run: echo int step ${{ github.event_name }}
