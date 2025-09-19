@@ -3,7 +3,7 @@ on:
   push
 
 jobs:
-  starts-with:
+  contains:
     runs-on: ubuntu-latest
     steps:
       - name: contains with true
