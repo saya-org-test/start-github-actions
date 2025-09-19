@@ -6,10 +6,10 @@ jobs:
   starts-with:
     runs-on: ubuntu-latest
     steps:
-      - name: starts with true
+      - name: contains with true
         if: contains('github actions', 'hub' )
-        run: echo git is true
-      - name: starts with true
+        run: echo hub is true
+      - name: contains with true
         if: contains('github, actions', 'hub' )
-        run: echo test is true
+        run: echo hub is true
         
