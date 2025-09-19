@@ -7,9 +7,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: starts with true
-        if: startsWith('github actions', 'git' )
+        if: endsWith('github actions', 'ions' )
         run: echo git is true
       - name: starts with false
-        if: startsWith('github actions', 'test' )
+        if: endsWith('github actions', 'test' )
         run: echo test is false
         
