@@ -1,0 +1,15 @@
+name: string-function.yml
+on:
+  push
+
+jobs:
+  starts-with:
+    runs-on: ubuntu-latest
+    steps:
+      - name: starts with true
+        if: startsWith('github actions', 'git' )
+        run: echo git is true
+      - name: starts with false
+        if: startsWith('github actions', 'test' )
+        run: echo test is false
+        
