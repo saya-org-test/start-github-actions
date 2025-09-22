@@ -20,12 +20,12 @@ on:
         type: string
         
 jobs:
-  create-repoeautomation:
+  create-repo:
     runs-on: ubuntu-latest
     steps:
-      - name: gh aith login
+      - name: gh auth login
         run: |
-          echo ${{ secrets.PERSONAL_ACCCESS_TOKEN}} | gh auth login --with-token
+          echo ${{ secrets.PERSONAL_ACCESS_TOKEN}} | gh auth login --with-token --confirm
       - name: create repo
         run: |
           gh repo create saya-org-test/${{ inputs.prefix }}-${{ inputs.name }} --public --add-readme
