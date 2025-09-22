@@ -26,6 +26,7 @@ jobs:
       - name: gh auth login
         run: |
           echo ${{ secrets.PERSONAL_ACCESS_TOKEN}} | gh auth login --with-token
+          unset GITHUB_TOKEN
       - name: create repo
         run: |
           gh repo create saya-org-test/${{ inputs.prefix }}-${{ inputs.name }} --private --add-readme
