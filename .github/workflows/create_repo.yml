@@ -25,9 +25,9 @@ jobs:
     steps:
       - name: gh auth login
         run: |
-          echo ${{ secrets.PERSONAL_ACCESS_TOKEN}} | gh auth login --with-token --confirm
+          echo ${{ secrets.PERSONAL_ACCESS_TOKEN}} | gh auth login --with-token
       - name: create repo
         run: |
-          gh repo create saya-org-test/${{ inputs.prefix }}-${{ inputs.name }} --public --add-readme
+          gh repo create saya-org-test/${{ inputs.prefix }}-${{ inputs.name }} --private --add-readme --confirm
   
   
