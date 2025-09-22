@@ -28,6 +28,6 @@ jobs:
           echo ${{ secrets.PERSONAL_ACCESS_TOKEN}} | gh auth login --with-token
       - name: create repo
         run: |
-          gh repo create saya-org-test/${{ inputs.prefix }}-${{ inputs.name }} --private --add-readme --confirm
+          gh repo create saya-org-test/${{ inputs.prefix }}-${{ inputs.name }} --private --add-readme
   
   
