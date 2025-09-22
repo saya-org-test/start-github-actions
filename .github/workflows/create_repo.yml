@@ -1,0 +1,33 @@
+name: create_repo
+# inputs 값을 사용자로 부터 받아야 하므로,
+# workflow_dispatch를 사용한다.
+on:
+  workflow_dispatch:
+    inputs:
+      prefix:
+        description: 'repo name'
+        required: true
+        default: 'service'
+        type: choice
+        options:
+          - example
+          - service
+      
+      name:
+        description: 'set repo name'
+        required: true
+        default: 'github-actions'
+        type: string
+        
+jobs:
+  create-repoeautomation:
+    runs-on: ubuntu-latest
+    steps:
+      - name: gh aith login
+        run: |
+          echo $ {{ secrets.PERSONAL_ACCCESS_TOKEN}} | gh auth login --with-token
+      - name: create repo
+        run: |
+          gh repo create saya-org-test/${{ inputs.prefix }}-${{ inputs.name }} --public --add-readme
+  
+  
