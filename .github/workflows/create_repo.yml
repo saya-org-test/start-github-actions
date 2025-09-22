@@ -25,7 +25,7 @@ jobs:
     steps:
       - name: gh aith login
         run: |
-          echo $ {{ secrets.PERSONAL_ACCCESS_TOKEN}} | gh auth login --with-token
+          echo $ {{ secrets.PERSONAL_ACCESS_TOKEN}} | gh auth login --with-token
       - name: create repo
         run: |
           gh repo create saya-org-test/${{ inputs.prefix }}-${{ inputs.name }} --public --add-readme
