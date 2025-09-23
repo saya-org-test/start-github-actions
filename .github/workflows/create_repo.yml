@@ -39,6 +39,8 @@ jobs:
         # uses 키워드 : actios를 import 및 사용
         uses: slackapi/slack-github-action@v2.1.1
         with:
+          slack-webhook-url: ${{ secrets.SLACK_WEBHOOK_URL }}
+          webhook-type: incoming-webhook
           # ${{ steps.create-repo.outcome }}" 성공: success, 실패: failure
           # ${{ steps.create-repo.outcome }}": 결과 값을 가져옴
           payload: |
@@ -57,10 +59,8 @@ jobs:
                 }
               ]
             }
-        env:
-          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
-          SLACK_WEBHOOK_TYPE: INCOMING_WEBHOOK
-        
+          
+     
         
         
   
