@@ -51,7 +51,7 @@ jobs:
                     {
                       "title": "create repo result: ${{ steps.create-repo.outcome }}",
                       "short": true,
-                      "value": "${{ inputs.prefix }}-${{ inputs.name}}"
+                      "value": "${{ inputs.prefix }}-${{ inputs.name }}"
                     }
                   ]
                 }
