@@ -24,12 +24,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: gh auth login
-        # 여기서 로그인을 하면 계속 사용한다. 재 로그인시 충돌이 발생할 수 있음
         run: |
           echo ${{ secrets.PERSONAL_ACCESS_TOKEN}} | gh auth login --with-token
           unset GITHUB_TOKEN
       - name: create repo
         run: |
-          gh repo create saya-org-test/${{ inputs.prefix }}-${{ inputs.name }} --private --add-readme
+          gh repo create saya-org-test/${{ inputs.prefix }}-${{ inputs.name }} --public --add-readme
   
   
