@@ -28,7 +28,40 @@ jobs:
           echo ${{ secrets.PERSONAL_ACCESS_TOKEN}} | gh auth login --with-token
           unset GITHUB_TOKEN
       - name: create repo
+        # id를 활용하여 outputs을 구성할 것 -> 결과 값을 확인하여 slack으로 보낼것 -> outputs 사용하기 위해 id가 필요함
+        id: create-repo
         run: |
           gh repo create saya-org-test/${{ inputs.prefix }}-${{ inputs.name }} --public --add-readme
+      
+      - name: slack notification
+        # aways() 를 step 레벨에 사용하여, 앞에 스텝이 실패 하더라도 해당 step은 항상 실행 된다
+        if: always()
+        # uses 키워드 : actios를 import 및 사용
+        uses: slackapi/slack-github-action@v2.1.1
+        with:
+          # ${{ steps.create-repo.outcome }}" 성공: success, 실패: failure
+          # ${{ steps.create-repo.outcome }}": 결과 값을 가져옴
+          payload: |
+            {
+              "attachments": [
+                {
+                  "pretext": "create repo result",
+                  "color": "28a745",
+                  "fields": [
+                    {
+                      "title": "create repo result: ${{ steps.create-repo.outcome }}",
+                      "short": true,
+                      "value": "${{ inputs.prefix }}-${{ inputs.name}}"
+                    }
+                  ]
+                }
+              ]
+            }
+        env:
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+          SLACK_WEBHOOK_TYPE: INCOMING_WEBHOOK
+        
+        
+        
   
   
