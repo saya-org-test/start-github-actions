@@ -30,3 +30,34 @@ jobs:
        - name: get output
          run: |
            echo ${{ steps.get-keyword.outputs.level }}
+  
+  # slack job
+   slack:
+     needs: [get-keyword]
+     if: needs.get-keyword.outputs.level != 'Undefined'
+     runs-on: ubuntu-latest
+     environment: ${{ needs.get-keyword.outputs.level }}
+     steps:
+       - name: slack
+         uses: slackapi/slack-github-action@v2
+         with:
+           webhook-type: incoming-webhook
+           webhook: ${{ secrets.SLACK_WEBHOOK_URL }}
+           payload: |
+             {
+             "attachments": [
+                {
+                "pretext": "Issue alert message",
+                "color": "28a745",
+                "text": "Issue Title: ${{ github.event.issue.title }}",
+                "fields": [
+                  {
+                    "title": "${{ needs.get-keyword.outputs.level }}",
+                    "value": "issue url : ${{ github.event.issue.html_url }}",
+                    "short": true
+                  }
+                  ]
+                }
+             
+                ]
+             }
