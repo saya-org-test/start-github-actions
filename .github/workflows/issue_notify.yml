@@ -1,0 +1,32 @@
+name: issue-notify
+# workflows 구성은 크게 2가지
+# 1. 이벤트에 대한 작업을 정의하는 부분 => 트리거 구성, on:
+# 2. 작업을 실행하는 부분 => job 구성, jobs:
+on:
+  issues:
+    types: [opened]
+# 트리거 구성 완료!
+
+jobs:
+   get-keyword:
+     runs-on: ubuntu-latest
+     outputs:
+       level: ${{ steps.get-keyword.outputs.level }}
+     steps:
+       - name: checkout
+         uses: actions/checkout@v5
+       - name: get keyword
+         #outputs 사용을 위해 id를 주었다
+         id: get-keyword
+         run: |
+           echo level=Undefined >> $GITHUB_OUTPUT
+           
+           
+           for keyword in $keywords; do
+            if [[ "${{ github.event.issue.title }}" =~ "$keyword" ]]; then
+              echo level=$keyword >> $GITHUB_OUTPUT
+            fi
+           done
+       - name: get output
+         run: |
+           echo ${{ steps.get-keyword.outputs.level }}
