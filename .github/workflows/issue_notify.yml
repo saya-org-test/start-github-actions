@@ -11,17 +11,17 @@ jobs:
    get-keyword:
      runs-on: ubuntu-latest
      outputs:
-       level: ${{ steps.get-keyword.outputs.level }}
+      level: ${{ steps.get-keyword.outputs.level }}
      steps:
        - name: checkout
-         uses: actions/checkout@v5
+         uses: actions/checkout@v4
        - name: get keyword
          #outputs 사용을 위해 id를 주었다
          id: get-keyword
          run: |
            echo level=Undefined >> $GITHUB_OUTPUT
            
-           
+           keywords=$(cat keyword-list.txt)
            for keyword in $keywords; do
             if [[ "${{ github.event.issue.title }}" =~ "$keyword" ]]; then
               echo level=$keyword >> $GITHUB_OUTPUT
