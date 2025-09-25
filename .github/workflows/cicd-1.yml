@@ -1,0 +1,38 @@
+# workflow의 구성 => Trigger 구성 + job 구성
+
+name: cicd-1
+#Trigger 구성
+on:
+  pull_request:
+    types:
+      - [opened,synchronize,closed]
+    branches:
+      - [dev]
+    paths:
+      - "my-app/**"
+      
+# job 구성
+# 역할에 따라 1. 테스트, 2. 이미지 빌드, 3. 배포
+jobs:
+   test:
+     if: github.event.action == 'opened' || github.event.action == 'synchronize'
+     runs-on: ubuntu-latest
+     steps:
+       - name: checkout
+         uses: actions/checkout@v4
+        
+   image-build:
+     if: github.event.pull_request.merged == 'true'
+     runs-on: ubuntu-latest
+     steps:
+       - name: checkout
+         uses: actions/checkout@v4
+   
+   deploy:
+     runs-on: ubuntu-latest
+     needs: [image-build]
+     steps:
+       - name: checkout
+         uses: actions/checkout@v4
+
+
