@@ -5,9 +5,9 @@ name: cicd-1
 on:
   pull_request:
     types:
-      - [opened,synchronize,closed]
+      [opened,synchronize,closed]
     branches:
-      - [dev]
+      [dev]
     paths:
       - "my-app/**"
       
